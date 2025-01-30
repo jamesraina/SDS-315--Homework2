@@ -3,6 +3,7 @@ title: "SDS 315- Homework 2"
 author: "Raina James (rj24685)"
 output: html_document
 ---
+**GitHub Repository**: [SDS-315 Homework 2 Repository](https://github.com/jamesraina/SDS-315--Homework2/blob/main/HW2.Rmd)
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning=FALSE)
@@ -32,7 +33,7 @@ ggplot(data, aes(x = eval)) +
   theme_minimal()
 ```
 
-*This histogram shows the distribution of evaluation scores. The mean is `r eval_mean`, and the standard deviation is `r eval_sd`. Most evaluations cluster between 4 and 5, reflecting generally favorable ratings across courses.*
+*This histogram shows the distribution of evaluation scores, with the mean being `r eval_mean`, and the standard deviation being `r eval_sd`. Most of the evaluations cluster between 4 and 5, which shows generally favorable ratings across the courses.*
 
 ---
 
@@ -56,7 +57,7 @@ ggplot(data, aes(x = native, y = eval, fill = native)) +
   theme(legend.position = "none")
 ```
 
-*Boxplots reveal slightly higher median evaluation scores for native English speakers. The average score for native speakers is `r data_summary$mean_eval[1]`, while for non-native speakers it is `r data_summary$mean_eval[2]`. Overlapping distributions suggest nativeness has limited impact.*
+*The boxplots show a slightly higher median evaluation scores for native English speakers. The average score for native speakers is `r data_summary$mean_eval[1]`, and for non-native speakers it is `r data_summary$mean_eval[2]`. The overlapping distributions indicate that nativeness has a minimal effect.*
 
 ---
 
@@ -79,7 +80,7 @@ ggplot(data, aes(x = eval)) +
   theme_minimal()
 ```
 
-*Faceted histograms for male and female instructors reveal no significant differences. The average evaluation score for male instructors is `r gender_summary$mean_eval[gender_summary$gender == 'male']`, and for female instructors is `r gender_summary$mean_eval[gender_summary$gender == 'female']`. Both genders show clustering around scores of 4 and 5.*
+*Faceted histograms for male and female instructors show overall no significant differences. The average evaluation score for male instructors is `r gender_summary$mean_eval[gender_summary$gender == 'male']` and for female instructors it is `r gender_summary$mean_eval[gender_summary$gender == 'female']`. Both of the genders show clustering around scores of 4 and 5.*
 
 ---
 
@@ -101,14 +102,13 @@ ggplot(data, aes(x = beauty, y = eval, color = gender)) +
   theme_minimal()
 ```
 
-*The scatterplot suggests a slight positive relationship between attractiveness and evaluation scores. The correlation coefficient is `r correlation`. While attractiveness may contribute to higher scores, the effect size appears modest.*
+*The scatterplot displays a slight positive relationship between attractiveness and evaluation scores. The correlation coefficient is `r correlation`. Though attractiveness may influence higher scores, the impact seem relatively minimal.*
 
 ## Question 2: Bike Sharing Analysis
 
 ### Plot A: Average Hourly Bike Rentals
 
 ```{r plot-a}
-library(dplyr)
 
 bikeshare <- read.csv("bikeshare.csv")
 avg_hourly <- bikeshare %>%
@@ -126,7 +126,7 @@ ggplot(avg_hourly, aes(x = hr, y = avg_total)) +
   theme_minimal()
 ```
 
-*The line graph displays the average number of bike rentals throughout the day. The x-axis represents the hour of the day (0 to 23), while the y-axis shows the average number of rentals. The graph shows distinct peaks around 8 AM and 5 PM, aligning with typical morning and evening commute hours. Take home lesson: this pattern highlights that bike-sharing systems play a critical role in supporting daily commutes.*
+*The line graph displays the average number of bike rentals throughout the day. The x-axis shows the hour of the day (0 to 23) and y-axis shows the average number of rentals. The graph displays peaks around 8 AM and 5 PM, which aligns with typical morning and evening commute hours. This pattern shows that bike-sharing systems play an important role in supporting daily commutes.*
 
 ---
 
@@ -150,7 +150,7 @@ ggplot(avg_workingday, aes(x = hr, y = avg_total, color = factor(workingday))) +
   theme_minimal()
 ```
 
-*The faceted line graph compares hourly bike rentals on working days versus non-working days. The x-axis represents the hour of the day (0 to 23), while the y-axis shows the average number of rentals. The top panel shows rentals on working days, with peaks at 8 AM and 5 PM reflecting commuting times. The bottom panel depicts non-working days, where rentals gradually rise and peak in the afternoon. Take home lesson: this comparison illustrates the influence of work schedules on bike rental patterns, emphasizing higher reliance on bikes for commutes during working days.*
+*This faceted line graph compares the hour of day for working days and non-working days in bike rentals. X-axis is the hour of day, ranging from 0 to 23, and the y-axis is an average number of rentals. The panel on top is for rentals on working days; the peak around 8 am and 5 pm reflects the commuting hours. The lower panel shows days off, on which rentals build up gradually and peak in the afternoon. Take-home message: This comparison shows how work schedules affect the bike rental patterns, focusing on higher demand for using bikes to go to and from work on working days.*
 
 ---
 
@@ -175,7 +175,7 @@ ggplot(rentals_9am, aes(x = factor(weathersit), y = avg_total, fill = factor(wor
   theme_minimal()
 ```
 
-*The bar plot shows average bike rentals at 9 AM across different weather situations. The x-axis represents weather situations (1: Clear, 2: Mist, 3: Light Snow/Rain, 4: Severe Weather), and the y-axis shows the average rentals. Panels separate working days from non-working days. Clear weather (situation 1) has the highest rentals, while severe weather (situation 4) drastically reduces usage. Take home lesson: this plot underscores how weather conditions significantly impact bike-sharing demand, especially during the morning rush hour.*
+*The above bar plot gives the average bike rentals for different instances of weather situations in the morning-9 am. X-axis provides the various conditions of the weather (1- Clear, 2 - Mist, 3- Light Snow/Rain and 4 - severe), whereas y-axis shows the average of rental and panel separates working day vs. non-working day. Clear situation represents maximum number of rentals, where the severe condition drastically reduces its usage. Take home lesson: this plot really drives home how the weather affects bike-sharing demand, particularly in the morning peak.*
 
 ## Question 3: Capital Metro UT Ridership Analysis
 
@@ -205,7 +205,7 @@ ggplot(avg_boardings, aes(x = hour_of_day, y = avg_boarding, color = month)) +
   theme_minimal()
 ```
 
-*This faceted line graph illustrates average boardings throughout the day, faceted by day of the week, with lines colored by month. The x-axis shows the hour of the day, and the y-axis represents average boardings. Across most weekdays, boardings peak around 8 AM and 5 PM, corresponding to commuting times. However, Monday boardings in September are lower, likely due to a slow start to the semester, while Wednesdays through Fridays in November show reduced activity, potentially due to holiday breaks. These patterns highlight how academic schedules and holidays influence ridership.*
+*This faceted line graph shows the average boardings throughout the day, faceted by day of the week with lines colored by month. The x-axis shows the hour of the day while the y-axis represents average boardings. Throughout most weekdays, boardings peak at 8 AM and 5 PM - commuting times. However, Monday boardings in September are lower due to the generally slower start of the semester, while Wednesday through Friday counts tend to be lower in November because of the holiday breaks. This is just the pattern during the school year that correlates with holidays and semester dates.*
 
 ---
 
@@ -213,9 +213,9 @@ ggplot(avg_boardings, aes(x = hour_of_day, y = avg_boarding, color = month)) +
 
 ```{r capmetro-b}
 ggplot(capmetro_UT, aes(x=temperature, y=boarding, color=weekend)) +
-  geom_point(alpha=0.6) +
+  geom_point(alpha=0.5) +
   facet_wrap(~ hour_of_day, ncol=4) +
-  scale_color_manual(values=c("blue", "red"), labels=c("Weekday", "Weekend")) +
+  scale_color_manual(values=c("red", "green"), labels=c("Weekday", "Weekend")) +
   labs(title="Boardings vs. Temperature Faceted by Hour of Day",
        x="Temperature (°F)",
        y="Boardings",
@@ -223,7 +223,7 @@ ggplot(capmetro_UT, aes(x=temperature, y=boarding, color=weekend)) +
   theme_minimal()
 ```
 
-*This scatter plot illustrates the relationship between temperature (in degrees Fahrenheit, shown on the x-axis) and the number of boardings (y-axis) for the Capital Metro UT bus system, grouped by day type (weekdays and weekends). Each point represents boardings in a 15-minute interval. Points are color-coded to differentiate between weekdays and weekends. The scatter plot reveals that while temperature significantly affects bus ridership—showing reduced boardings at extreme temperatures—this trend is consistent across both weekdays and weekends. This insight suggests that weather conditions impact bus demand uniformly, regardless of the day type.*
+*This scatter plot shows the relationship between temperature (in degrees Fahrenheit, on the x-axis) and the number of boardings (y-axis) for the Capital Metro UT bus system, based on day type (weekdays and weekends). Each point represents boardings in a 15-minute interval. Points are color-coded to differentiate between two days of the week. The scatter plot reveals that while temperature significantly affects bus ridership—showing reduced boardings at extreme temperatures—this trend is consistent across both weekdays and weekends. This insight suggests that weather conditions impact bus demand uniformly, regardless of the day type.*
 
 ## Question 4: Wrangling the Billboard Top 100
 
@@ -249,7 +249,7 @@ top_songs %>%
   column_spec(2, italic = TRUE)
 ```
 
-*Table showing the top 10 most popular songs on the Billboard Top 100 since 1958. The table includes the performer, song title, and the total number of weeks each song appeared on the chart. Songs are ranked by the count of weeks, in descending order.*
+*Table of the top 10 most popular songs on Billboard Top 100 since 1958. Performer, song title, and total number of weeks each song appeared on the chart. Songs are ranked by count of weeks in descending order.*
 
 ---
 
@@ -276,7 +276,7 @@ ggplot(diversity, aes(x = year, y = unique_songs)) +
   theme_minimal()
 ```
 
-*This line graph illustrates the musical diversity of the Billboard Top 100 over time, measured by the number of unique songs appearing in the chart each year. The x-axis represents the years (excluding 1958 and 2021 due to incomplete data), while the y-axis shows the count of unique songs. The trend highlights periods of increased diversity, possibly reflecting changes in the music industry and consumer preferences.*
+*This line graph looks at the musical diversity of Billboard Top 100 over time through the number of unique songs featuring in the chart every year. The x-axis shows the yearly values, each missing 1958 and 2021 records due to partial data. While the y-axis shows the counts of unique songs, the tendency reveals a peak of the curves that might highlight the shifting paradigms regarding music consumption, perhaps, through changes in business models and music consumption habits.*
 
 ---
 
@@ -308,4 +308,4 @@ ggplot(artist_hits, aes(x = reorder(performer, -ten_week_hits), y = ten_week_hit
   theme_minimal()
 ```
 
-*This bar plot shows the 19 artists with the most songs that remained on the Billboard Top 100 for at least ten weeks. The x-axis lists the artists, while the y-axis represents the number of ten-week hits. The bars are ordered by the number of hits, and the horizontal layout ensures readability of artist names.*
+*This bar plot shows the 19 artists with the most songs that stayed on the Billboard Top 100 for at least ten weeks. The x-axis lists the artists, while the y-axis is the number of ten-week hits. Bars are ordered by number of hits and the horizontal orientation makes artist names readable.*
